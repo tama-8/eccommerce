@@ -6,6 +6,7 @@ WORKDIR /app
 ARG UID=1000
 ARG GID=1000
 
+# パッケージのインストールとキャッシュのクリア
 RUN bash -c "set -o pipefail && apt-get update \
   && apt-get install -y --no-install-recommends build-essential curl git libpq-dev \
   && curl -sSL https://deb.nodesource.com/setup_18.x | bash - \
@@ -35,6 +36,7 @@ ENV RAILS_ENV="${RAILS_ENV}" \
 
 COPY --chown=ruby:ruby . .
 
+# アセットのプリコンパイルを実行（開発環境ではスキップ）
 RUN if [ "${RAILS_ENV}" != "development" ]; then \
   SECRET_KEY_BASE=dummyvalue rails assets:precompile; fi
 
@@ -50,9 +52,9 @@ WORKDIR /app
 ARG UID=1000
 ARG GID=1000
 
+# 必要なパッケージのインストールとキャッシュのクリア
 RUN apt-get update \
-  # && apt-get install -y --no-install-recommends build-essential curl libpq-dev \
-  && apt-get install -y --no-install-recommends build-essential curl libpq-dev vim \
+  && apt-get install -y --no-install-recommends build-essential curl libpq-dev vim git \
   && rm -rf /var/lib/apt/lists/* /usr/share/doc /usr/share/man \
   && apt-get clean \
   && groupadd -g "${GID}" ruby \
