@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      customer: "顧客"
+    attributes:
+      customer:
+        email: "メールアドレス"
+        password: "パスワード"
+        name: "名前"
+
+  errors:
+    template:
+      header:
+        one: "%{model}の保存に失敗しました: 1つのエラーがあります"
+        other: "%{model}の保存に失敗しました: %{count}つのエラーがあります"
+      body: "次の項目を確認してください："
+
+    messages:
+      blank: "を入力してください"
