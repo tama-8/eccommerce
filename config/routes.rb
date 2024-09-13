@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   # URL や名前付きパスには「customer」は付与され
   scope module: :customer do
     resources :products, only: %i[index show]
+    resources :cart_items, only: %i[index create destroy] do
+      member do # cart_item の id が含まれる URL
+        patch 'increase' # アイテムの数量を増やす
+        patch 'decrease' # アイテムの数量を減らす
+      end
+    end
   end
 
   get '/up/', to: 'up#index', as: :up

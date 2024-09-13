@@ -15,4 +15,6 @@ class Customer < ApplicationRecord
     # 停止
     banned: 2
   }
+
+  has_many :cart_items, dependent: :destroy
 end
