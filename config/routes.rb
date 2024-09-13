@@ -7,8 +7,14 @@ Rails.application.routes.draw do
     registrations: 'customer/registrations'
   }
   root to: 'pages#home'
+  # 管理者側
   namespace :admin do
     resources :products, only: %i[index show new create edit update]
+  end
+  # 会員側
+  # URL や名前付きパスには「customer」は付与され
+  scope module: :customer do
+    resources :products, only: %i[index show]
   end
 
   get '/up/', to: 'up#index', as: :up
