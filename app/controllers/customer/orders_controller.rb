@@ -9,6 +9,5 @@ class Customer::OrdersController < ApplicationController
     @order = current_customer.orders.find(params[:id])
   end
 
-  def success
-  end
+  def success; end
 end

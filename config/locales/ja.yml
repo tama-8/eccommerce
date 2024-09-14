@@ -1,4 +1,19 @@
 ja:
+  devise:
+    failure:
+      admin:
+        invalid: "無効なメールアドレスまたはパスワードです"
+      invalid: "無効なメールアドレスまたはパスワードです"
+    sessions:
+      admin:
+        ssigned_in: "管理者としてサインインしました"
+        signed_out: "管理者としてサインアウトしました"
+      signed_in: "サインインしました"
+      signed_out: "サインアウトしました"
+  time:
+    formats:
+      short: "%Y/%m/%d %H:%M"
+
   activerecord:
     models:
       customer: "顧客"
@@ -7,6 +22,16 @@ ja:
         email: "メールアドレス"
         password: "パスワード"
         name: "名前"
+
+    # ここにenumの翻訳を追加
+  enums:
+    order:  # "oder" を "order" に修正
+      status:
+        waiting_payment: '支払い待ち'
+        confirm_payment: '支払い確認'
+        shipped: '発送済み'
+        out_of_delivery: '配送中'
+        delivered: '配達済み'
 
   errors:
     template:

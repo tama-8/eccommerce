@@ -12,28 +12,28 @@ class Customer::ProductsController < ApplicationController
 
   def create
     if current_customer.nil?
-      Rails.logger.error "Current customer is nil. Unable to set client_reference_id."
+      Rails.logger.error 'Current customer is nil. Unable to set client_reference_id.'
     else
       Rails.logger.info "Current customer ID: #{current_customer.id}"
     end
     # Stripe::Checkout::Sessionを作成する
     session = Stripe::Checkout::Session.create({
-      payment_method_types: ['card'],
-      line_items: [{
-        price_data: {
-          currency: 'usd',
-          product_data: {
-            name: 'Sample Product',
-          },
-          unit_amount: 1000,
-        },
-        quantity: 1,
-      }],
-      mode: 'payment',
-      success_url: success_url,
-      cancel_url: cancel_url,
-      client_reference_id: current_customer.id, # 顧客IDを設定
-    })
+                                                 payment_method_types: ['card'],
+                                                 line_items: [{
+                                                   price_data: {
+                                                     currency: 'usd',
+                                                     product_data: {
+                                                       name: 'Sample Product'
+                                                     },
+                                                     unit_amount: 1000
+                                                   },
+                                                   quantity: 1
+                                                 }],
+                                                 mode: 'payment',
+                                                 success_url:,
+                                                 cancel_url:,
+                                                 client_reference_id: current_customer.id # 顧客IDを設定
+                                               })
     Rails.logger.info "Created session ID: #{session.id}"
     Rails.logger.info "Session data: #{session.inspect}"
 
@@ -41,23 +41,23 @@ class Customer::ProductsController < ApplicationController
     render json: { id: session.id }
   end
 end
+
   private
 
-  def get_products(params)
-    # 条件: `params` の中に `latest`, `price_high_to_low`, `price_low_to_high` のいずれも存在しない場合
-    # 特にソート条件が指定されていない場合に、全商品を取得し、ソートは「デフォルト」という扱いに
-    return Product.all, 'default' unless params[:latest] || params[:price_high_to_low] || params[:price_low_to_high]
+def get_products(params)
+  # 条件: `params` の中に `latest`, `price_high_to_low`, `price_low_to_high` のいずれも存在しない場合
+  # 特にソート条件が指定されていない場合に、全商品を取得し、ソートは「デフォルト」という扱いに
+  return Product.all, 'default' unless params[:latest] || params[:price_high_to_low] || params[:price_low_to_high]
 
-    # 条件: `params[:latest]` が存在する場合,最新の商品を返す（Product.latest）
-    # 'latest'（最新）
-    return Product.latest, 'latest' if params[:latest]
+  # 条件: `params[:latest]` が存在する場合,最新の商品を返す（Product.latest）
+  # 'latest'（最新）
+  return Product.latest, 'latest' if params[:latest]
 
-    # 条件: `params[:price_high_to_low]` が存在する場合,価格が高い順にソートされた商品リストを返します。
-    #  'price_high_to_low'（価格が高い順）
-    return Product.price_high_to_low, 'price_high_to_low' if params[:price_high_to_low]
+  # 条件: `params[:price_high_to_low]` が存在する場合,価格が高い順にソートされた商品リストを返します。
+  #  'price_high_to_low'（価格が高い順）
+  return Product.price_high_to_low, 'price_high_to_low' if params[:price_high_to_low]
 
-    # 条件: `params[:price_low_to_high]` が存在する場合,、価格が低い順にソートされた商品リストを返します。
-    #  'price_low_to_high'（価格が低い順）
-    [Product.price_low_to_high, 'price_low_to_high'] if params[:price_low_to_high]
-  end
-
+  # 条件: `params[:price_low_to_high]` が存在する場合,、価格が低い順にソートされた商品リストを返します。
+  #  'price_low_to_high'（価格が低い順）
+  [Product.price_low_to_high, 'price_low_to_high'] if params[:price_low_to_high]
+end

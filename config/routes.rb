@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # 管理者側
   namespace :admin do
+    root to: 'pages#home'
     resources :products, only: %i[index show new create edit update]
+    resources :orders, only: %i[show update]
   end
   # 会員側
   # URL や名前付きパスには「customer」は付与され
