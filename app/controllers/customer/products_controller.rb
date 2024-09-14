@@ -1,4 +1,6 @@
 class Customer::ProductsController < ApplicationController
+  before_action :authenticate_customer!, only: [:create]
+  skip_before_action :verify_authenticity_token
   def index
     @products, @sort = get_products(params)
   end
@@ -8,6 +10,37 @@ class Customer::ProductsController < ApplicationController
     @cart_item = CartItem.new
   end
 
+  def create
+    if current_customer.nil?
+      Rails.logger.error "Current customer is nil. Unable to set client_reference_id."
+    else
+      Rails.logger.info "Current customer ID: #{current_customer.id}"
+    end
+    # Stripe::Checkout::Sessionを作成する
+    session = Stripe::Checkout::Session.create({
+      payment_method_types: ['card'],
+      line_items: [{
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: 'Sample Product',
+          },
+          unit_amount: 1000,
+        },
+        quantity: 1,
+      }],
+      mode: 'payment',
+      success_url: success_url,
+      cancel_url: cancel_url,
+      client_reference_id: current_customer.id, # 顧客IDを設定
+    })
+    Rails.logger.info "Created session ID: #{session.id}"
+    Rails.logger.info "Session data: #{session.inspect}"
+
+    # セッションのIDをビューに渡す
+    render json: { id: session.id }
+  end
+end
   private
 
   def get_products(params)
@@ -27,4 +60,4 @@ class Customer::ProductsController < ApplicationController
     #  'price_low_to_high'（価格が低い順）
     [Product.price_low_to_high, 'price_low_to_high'] if params[:price_low_to_high]
   end
-end
+

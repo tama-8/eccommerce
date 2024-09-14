@@ -79,3 +79,4 @@ end
 gem "devise"
 # Stripeを使った決済処理の実装
 gem "stripe"
+gem 'byebug', group: :development

@@ -47,6 +47,7 @@ services:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
       POSTGRES_DB: "${POSTGRES_DB}"
+      RAILS_MASTER_KEY: "fd2d4b6ee6b3deae6e1d862f54a9570f" # ここにマスターキーを追加
     image: "postgres:15.1-bullseye"
     profiles: ["postgres"]
     restart: "${DOCKER_RESTART_POLICY:-unless-stopped}"
