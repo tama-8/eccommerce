@@ -10,6 +10,10 @@ ja:
         signed_out: "管理者としてサインアウトしました"
       signed_in: "サインインしました"
       signed_out: "サインアウトしました"
+    failure:
+      admin:
+        unauthenticated: "管理者として認証されていません"
+      unauthenticated: "認証されていません"
   time:
     formats:
       short: "%Y/%m/%d %H:%M"
@@ -27,11 +31,16 @@ ja:
   enums:
     order:  # "oder" を "order" に修正
       status:
-        waiting_payment: '支払い待ち'
+        waiting_payment: '入金待ち'
         confirm_payment: '支払い確認'
         shipped: '発送済み'
         out_of_delivery: '配送中'
         delivered: '配達済み'
+    customer:
+      statuses:
+        normal: "通常"
+        withdrawn: "退会済み"
+        banned: "制限中"
 
   errors:
     template:
