@@ -62,6 +62,8 @@ class Customer::WebhooksController < ApplicationController
         create_order_details(order, line_item) # 取り出したline_itemをorder_detailsテーブルに登録
       end
     end
+    # トランザクションが成功した後にメールを送信
+    OrderMailer.complete(email: session.customer_details.email).deliver_later
   end
 
   def create_order(session)

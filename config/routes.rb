@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :admins, controllers: {
     sessions: 'admin/sessions'
@@ -13,6 +15,9 @@ Rails.application.routes.draw do
     resources :products, only: %i[index show new create edit update]
     resources :orders, only: %i[show update]
     resources :customers, only: %i[index show update]
+    authenticate :admin do
+      mount Sidekiq::Web => '/sidekiq'
+    end
   end
   # 顧客側
   # URL や名前付きパスには「customer」は付与され

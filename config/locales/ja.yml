@@ -14,6 +14,10 @@ ja:
       admin:
         unauthenticated: "管理者として認証されていません"
       unauthenticated: "認証されていません"
+    registrations:
+      customer:
+        signed_up: "顧客としてサインアップが完了しました"
+      signed_up: "サインアップが完了しました"
 
   time:
     formats:
