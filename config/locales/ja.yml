@@ -14,6 +14,7 @@ ja:
       admin:
         unauthenticated: "管理者として認証されていません"
       unauthenticated: "認証されていません"
+
   time:
     formats:
       short: "%Y/%m/%d %H:%M"
@@ -25,6 +26,8 @@ ja:
       customer:
         email: "メールアドレス"
         password: "パスワード"
+        password_confirmation: "パスワード確認"
+        current_password: "現在のパスワード"
         name: "名前"
 
     # ここにenumの翻訳を追加

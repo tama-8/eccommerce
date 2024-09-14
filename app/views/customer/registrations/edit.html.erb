@@ -1,6 +1,6 @@
 <div class="mb-6 text-center">
   <span class="text-3xl font-bold">
-    Edit Profile
+    プロフィール編集
   </span>
 </div>
 
@@ -24,7 +24,7 @@
     </div>
 
     <div class="mb-6">
-      <%= f.label :password, "password", class: "mb-2 block text-sm text-gray-600" %>
+      <%= f.label :password, class: "mb-2 block text-sm text-gray-600" %>
       <%= f.password_field :password, class: "w-full rounded-md border border-gray-300 py-2 px-3 placeholder:text-gray-300 focus:border-indigo-300 focus:outline-none focus:ring focus:ring-indigo-100" %>
     </div>
 
@@ -39,7 +39,10 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Update Profile", class: "inline-flex w-full items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none" %>
+      <%= f.submit "プロフィール更新", class: "inline-flex w-full items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none" %>
     </div>
   <% end %>
+</div>
+ <div class="text-center font-bold text-red-500">
+  <%= link_to "Ecommerceから退会する", confirm_withdraw_customers_path %>
 </div>

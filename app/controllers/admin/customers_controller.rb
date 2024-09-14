@@ -3,7 +3,8 @@ class Admin::CustomersController < ApplicationController
   before_action :set_customer, only: %i[show update]
 
   def index
-    @customers = Customer.latest
+    # preload メソッドを使って 1+N 問題を解消します。
+    @customers = Customer.preload(:orders).latest
   end
 
   def show; end

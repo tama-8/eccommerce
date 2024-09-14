@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :orders, only: %i[show update]
     resources :customers, only: %i[index show update]
   end
-  # 会員側
+  # 顧客側
   # URL や名前付きパスには「customer」は付与され
   scope module: :customer do
     resources :products, only: %i[index show]
@@ -29,6 +29,12 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index show] do
       collection do
         get 'success'
+      end
+    end
+    resources :customers do
+      collection do
+        get 'confirm_withdraw'
+        patch 'withdraw'
       end
     end
   end
