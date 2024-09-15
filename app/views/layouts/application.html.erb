@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Ecommerce</title>
+    <title>にゃんずGoods</title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,11 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+    <script src="https://kit.fontawesome.com/75e15c40a4.js" crossorigin="anonymous"></script>
+   <!-- googleFonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kaisei+Decol:wght@400;500;700&display=swap" rel="stylesheet">
 
     <%# Generated with: https://realfavicongenerator.net/ %>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -22,14 +27,17 @@
     <meta name="theme-color" content="#ffffff">
   </head>
 
-  <body class="flex flex-col h-screen justify-between">
-    <div class='bg-gray-900 mb-8 z-10'>
+  <body class="flex flex-col h-screen justify-between m-0">
+    <div class='bg-[#2e004d] mb-8 z-10'> <!-- さらに濃いパープル -->
       <div class='container mx-auto flex max-w-4xl items-center px-2 py-5'>
         <div class='mx-auto flex w-full flex-wrap items-center'>
           <div class='flex w-full justify-center font-extrabold text-white lg:w-1/2 lg:justify-start'>
-            <%= link_to root_path, class: "text-2xl text-gray-900 no-underline hover:text-gray-900 hover:no-underline" do %>
-              🛍️ &nbsp; <span class=' text-gray-200'>ECommerce</span>
-            <% end %>
+          <%= link_to root_path, class: "text-2xl no-underline hover:no-underline flex items-center" do %>
+            <i class="fa-solid fa-cat" style="color: #ff6347;"></i>
+            <span class="kaisei-decol-bold ml-2 bg-gradient-to-r from-pink-500 to-pink-300 bg-clip-text text-transparent">
+              にゃんずGoods
+            </span>
+          <% end %>
           </div>
           <div class='flex w-full content-center justify-between pt-2 lg:w-1/2 lg:justify-end lg:pt-0'>
             <ul class='list-reset flex flex-1 items-center justify-center lg:flex-none h-12'>
@@ -169,7 +177,7 @@
 
     <footer class="text-center mt-6 pb-6 h-10">
       <p class="text-gray-500">
-        Copyright © FarStep All Rights Reserved.
+        Copyright © 2024 株式会社にゃんず All Rights Reserved.
       </p>
     </footer>
   </body>

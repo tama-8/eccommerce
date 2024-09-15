@@ -5,3 +5,21 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+.kaisei-decol-regular {
+    font-family: "Kaisei Decol", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .kaisei-decol-medium {
+    font-family: "Kaisei Decol", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .kaisei-decol-bold {
+    font-family: "Kaisei Decol", serif;
+    font-weight: 700;
+    font-style: normal;
+  }

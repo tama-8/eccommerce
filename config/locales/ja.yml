@@ -3,17 +3,18 @@ ja:
     failure:
       admin:
         invalid: "無効なメールアドレスまたはパスワードです"
+        unauthenticated: "管理者として認証されていません"
       invalid: "無効なメールアドレスまたはパスワードです"
+      unauthenticated: "認証されていません"
+      already_authenticated: "既にログインしています"
+    
     sessions:
       admin:
-        ssigned_in: "管理者としてサインインしました"
+        signed_in: "管理者としてサインインしました"
         signed_out: "管理者としてサインアウトしました"
       signed_in: "サインインしました"
       signed_out: "サインアウトしました"
-    failure:
-      admin:
-        unauthenticated: "管理者として認証されていません"
-      unauthenticated: "認証されていません"
+    
     registrations:
       customer:
         signed_up: "顧客としてサインアップが完了しました"
