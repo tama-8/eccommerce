@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>にゃんずGoods</title>
+    <title>にゃんずFood</title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -35,7 +35,7 @@
           <%= link_to root_path, class: "text-2xl no-underline hover:no-underline flex items-center" do %>
             <i class="fa-solid fa-cat" style="color: #ff6347;"></i>
             <span class="kaisei-decol-bold ml-2 bg-gradient-to-r from-pink-500 to-pink-300 bg-clip-text text-transparent">
-              にゃんずGoods
+              にゃんずFood
             </span>
           <% end %>
           </div>
@@ -120,12 +120,15 @@
         <div class="opacity-0 invisible dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
           <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
             <div class="px-4 py-3">         
-              <p class="text-sm leading-5">Signed in as</p>
+              <p class="text-sm leading-5">ログイン中</p>
               <p class="text-sm font-medium leading-5 text-gray-900 truncate"><%= current_customer.email %></p>
             </div>
             <div class="py-1">
               <%= link_to edit_customer_registration_path, class: "text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" do %>
-                Account settings
+                プロフィール変更
+              <% end %>
+              <%= link_to orders_path, class: "text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" do %>
+                注文履歴
               <% end %>
             </div>
             <div class="py-1">

@@ -1,0 +1,23 @@
+<%= form_with(model: [:admin, @product], local: true) do |form| %>
+  <div class="field">
+    <%= form.label :name, '商品名' %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :price, '価格' %>
+    <%= form.number_field :price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, '商品説明' %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :tag_list, 'タグ (カンマ区切りで入力)' %>
+    <%= form.text_field :tag_list, value: @product.tag_list.join(', ') %>
+  </div>
+
+  <%= form.submit '保存' %>
+<% end %>

@@ -4,6 +4,10 @@ class Admin::ProductsController < ApplicationController
 
   def index
     @products = Product.all
+     # タグ検索
+     if params[:tag].present?
+      @products = @products.tagged_with(params[:tag])
+    end
   end
 
   def new
@@ -38,6 +42,6 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :stock, :image)
+    params.require(:product).permit(:name, :description, :price, :stock, :image, :tag_list)
   end
 end

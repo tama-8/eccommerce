@@ -1,0 +1,14 @@
+<!-- app/views/customer/products/_search_form.html.erb -->
+<%= form_with url: products_path, method: :get, local: true, class: 'flex items-center' do |f| %>
+  <div class="flex items-center rounded-md p-3 mr-4">
+    <div class="mr-4">
+      <%= f.label :search, 'キーワード検索', class: 'mr-2' %>
+      <%= f.text_field :search, value: params[:search], placeholder: '商品名を入力', class: 'border border-gray-300 rounded-md py-1 px-2' %>
+    </div>
+    <div class="mr-4">
+      <%= f.label :tag, 'タグ検索', class: 'mr-2' %>
+      <%= f.text_field :tag, value: params[:tag], placeholder: 'タグを入力', class: 'border border-gray-300 rounded-md py-1 px-2' %>
+    </div>
+    <%= f.submit '検索', class: 'bg-green-500 text-white py-1 px-4 rounded hover:bg-green-600' %>
+  </div>
+<% end %>

@@ -3,12 +3,21 @@
     商品一覧
   </span>
 </div>
-
+<div class="flex items-center mb-4">
+  <%= form_with url: admin_products_path, method: :get, local: true, class: 'flex items-center mr-4' do |f| %>
+    <div class="mr-2">
+      <%= f.label :tag, 'タグで検索', class: 'mr-2' %>
+      <%= f.text_field :tag, value: params[:tag].presence || '', placeholder: 'タグを入力', class: 'border border-gray-300 rounded p-2' %>
+    </div>
+    <%= f.submit '検索', class: 'bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600' %>
+  <% end %>
+  
+  <%= link_to new_admin_product_path, class: "inline-flex items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none" do %>
+    新しい商品を追加
+  <% end %>
+</div>
 <div class="flex flex-wrap">
   <div class="flex-none w-full max-w-full px-6">
-    <%= link_to new_admin_product_path, class: "mb-4 inline-flex items-center justify-center rounded-md bg-indigo-500 p-3 text-white duration-100 ease-in-out hover:bg-indigo-600 focus:outline-none" do %>
-      新しい商品を追加
-    <% end %>
     <div class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
       <div class="flex-auto px-0 pt-0 pb-2">
         <div class="p-0 overflow-x-auto">
@@ -20,6 +29,7 @@
                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">在庫</th>
                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">作成日</th>
                 <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">更新日</th>
+                <th class="px-6 py-3 font-bold text-center uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">タグ</th>
                 <th class="px-6 py-3 font-semibold capitalize align-middle bg-transparent border-b border-gray-200 border-solid shadow-none tracking-none whitespace-nowrap text-slate-400 opacity-70"></th>
               </tr>
             </thead>
@@ -49,6 +59,9 @@
                   </td>
                   <td class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                     <span class="font-semibold leading-tight text-sm text-slate-400"><%= l product.updated_at, format: :short %></span>
+                  </td>
+                  <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                    <span class="font-semibold leading-tight text-sm text-slate-400"><%= product.tag_list.join(', ') %></span>
                   </td>
                   <td class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                     <%= link_to edit_admin_product_path(product), class: "font-semibold leading-tight text-xs text-slate-400" do %>

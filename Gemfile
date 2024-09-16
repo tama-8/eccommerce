@@ -80,3 +80,6 @@ gem "devise"
 # Stripeを使った決済処理の実装
 gem "stripe"
 gem 'byebug', group: :development
+
+# タグ機能
+gem 'acts-as-taggable-on', '~> 11.0'
