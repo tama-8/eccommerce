@@ -1,6 +1,6 @@
 
 # にゃんずFood
- ![サンプル画像](/app/assets/images/README.jpg)
+ ![サンプル画像](/assets/images/README.jpg)
  <div><video controls src="https://github.com/user-attachments/assets/8d5a611a-b785-4efc-a416-bb25715a28cc" muted="false"></video></div>
 
 を入力する。
